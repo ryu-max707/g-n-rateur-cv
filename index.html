@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Generateur de cv</title>
+</head>
+<body class= "bg-gray-100 p-6 ">
+    <div class="min-w-5xl mx-auto bg-white p-6 rounded-lg shadow-lg flex">
+        
+        <section>
+            <h2 class="font-bold text-4xl items-center justify-center flex mb-6">Remplir le Formulaire</h2>
+            <form id="cv-form" class="grid grid-cols-1 md:grid-cols-2 gap-4" >
+                <input type="text" id="fullName" placeholder="Nom complet" class="p-2 border rounded" >
+                <input type="number" id="age" placeholder="Âge (18-65)" class="p-2 border rounded" min="18" max="65">
+                <select id="gender" class="p-2 border rounded">
+                    <option value="">Sexe</option>
+                    <option value="Homme">Homme</option>
+                    <option value="Femme">Femme</option>
+                </select>
+                <input type="text" id="jobTitle" placeholder="Titre du poste" class="p-2 border rounded">
+                <input type="text" id="status" placeholder="Situation actuelle" class="p-2 border rounded">
+                <textarea id="description" placeholder="Brève description" class="p-2 border rounded col-span-2"></textarea>
+                <input type="email" id="email" placeholder="Email" class="p-2 border rounded" required>
+                <input type="tel" id="phone" placeholder="Téléphone" class="p-2 border rounded" required>
+                <input type="text" id="address" placeholder="Adresse" class="p-2 border rounded">
+                <input type="file" class="border border-gray-300 rounded-md p-2 w-full" id="profilePic" accept="image/*">
+
+    
+                <!-- Expériences professionnelles -->
+                <div class="bg-white rounded-lg shadow mb-6">
+                    <div class="flex justify-between items-center p-4 border-b">
+                        <h3 class="text-lg font-semibold">Expériences professionnelles</h3>
+                        <button type="button" id="addExperience" class="text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white text-sm px-3 py-1 rounded">Ajouter
+                        </button>
+                        </div>
+                    <div id="experienceSection" class="p-4">
+                        <!-- Bloc d'expérience ajouté dynamiquement -->
+                    </div>
+                </div>
+                <!-- formation -->
+                <div class="bg-white rounded-lg shadow mb-6">
+                    <div class="flex justify-between items-center p-4 border-b">
+                        <h3 class="text-lg font-semibold">formation</h3>
+                        <button type="button" id="addFormation" class="text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white text-sm px-3 py-1 rounded">Ajouter
+                        </button>
+                        </div>
+                    <div id="formationSection" class="p-4">
+                        <!-- Bloc de formation ajouté dynamiquement -->
+                    </div>
+                </div>
+                <!-- competences -->
+                <div class="bg-white rounded-lg shadow mb-6">
+                    <div class="flex justify-between items-center p-4 border-b">
+                        <h3 class="text-lg font-semibold">competences</h3>
+                        <button type="button" id="addCompetence" class="text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white text-sm px-3 py-1 rounded">Ajouter
+                        </button>
+                        </div>
+                    <div id="competenceSection" class="p-4">
+                        <!-- Bloc de competences ajouté dynamiquement -->
+                    </div>
+                </div>
+                <!-- Centre d'interet -->
+                <!-- Centres d'intérêt -->
+                <div class="bg-white shadow-md rounded-lg mb-3">
+                    <div class="flex justify-between items-center p-4 border-b">
+                    <span class="font-semibold text-lg">Centres d'intérêt</span>
+                    <button type="button" class="bg-transparent border border-blue-500 text-blue-500 text-sm px-2 py-1 rounded" id="addInterest">Ajouter</button>
+                    </div>
+                    <div class="p-4" id="interestSection">
+                    <div class="mb-2">
+                        <input type="text" class="form-input border border-gray-300 rounded-md p-2 w-full" id="interestInput" placeholder="Entrez un centre d'intérêt">
+                    </div>
+                    <ul id="interestList" class="list-none"></ul>
+                    </div>
+                </div>
+  
+                <!-- reference -->
+                <div class="bg-white rounded-lg shadow mb-6">
+                    <div class="flex justify-between items-center p-4 border-b">
+                        <h3 class="text-lg font-semibold">reference</h3>
+                        <button type="button" id="addReference" class="text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white text-sm px-3 py-1 rounded">Ajouter
+                        </button>
+                        </div>
+                    <div id="referenceSection" class="p-4">
+                        <!-- Bloc de reference ajouté dynamiquement -->
+                    </div>
+                </div>
+                
+                <!-- Langues -->
+                <div class="bg-white shadow-md rounded-lg mb-3">
+                    <div class="flex justify-between items-center p-4 border-b">
+                        <span class="font-semibold text-lg">Langues</span>
+                        <button type="button" class="bg-transparent border border-blue-500 text-blue-500 text-sm px-2 py-1 rounded" id="addLanguage">Ajouter</button>
+                    </div>
+                    <div class="p-4" id="languageSection">
+                    <!-- Bloc de langue ajouté dynamiquement -->
+                    </div>
+                </div>
+  
+                <div class="space-x-4">
+                    <button type="submit"  class="bg-blue-500 text-white p-2 rounded col-span-2 hover:bg-blue-200 hover:text-blue-700">Enregistrer</button>
+                    <button type="submit" id="reset" class="bg-blue-500 text-white p-2 rounded col-span-2 hover:bg-blue-200 hover:text-blue-700">Actualiser</button>
+                </div>
+            </form>
+        </section>
+        <section class="flex md:flex-row justify-center items-stretch min-h-screen  p-4 h-full rounded-lg ">
+            
+            <div class="left bg-green-500 text-white p-6 flex flex-col space-y-6 ">
+                <div class="flex justify-center mb-3">
+                    <img src="votre-image.jpg" alt="Photo de profil" id="previewProfilePic" class="rounded-full border border-gray-300 mb-2 w-36 h-36 object-cover" style="display: none;">
+                  </div>
+                  
+                <div>
+                    <h3 class="text-xl font-bold mb-2">INFORMATIONS <br>PERSONNELLES</h3>
+                    <hr class="border-white mb-2">
+                    <p><i class="fas fa-phone"></i> <span id="prevPhone"></span></p>
+                    <p><i class="fa-solid fa-location-dot"></i> <span id="prevAddress"></span></p>
+                    <p><i class="fas fa-envelope"></i> <span id="prevEmail"></span></p>
+                    <P id="prevStatus"></P>
+                    <p id="prevJobTitle"></p>
+                    <p id="prevAddress"></p>
+
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">COMPÉTENCES</h3>
+                    <hr class="border-white mb-2">
+                    <ul id="previewCompetence"></ul>
+                    
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">LANGUES</h3>
+                    <hr class="border-white mb-2">
+                    <ul id="previewLanguages"></ul>
+                    
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">CENTRES D'INTÉRÊT</h3>
+                    <hr class="border-white mb-2">
+                    <ul id="previewInterests"></ul>
+                    
+                </div>
+            </div>
+            <div class="right bg-gray-200 text-black p-6 ">
+                <h1 class="text-3xl font-bold w-64 Block break-words  mb-4" id="previewFullName"></h1>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">PROFIL</h3><br>
+                    <hr class="border-gray-500 mb-2">
+                    <h4 class="text-xl font-semibold w-64 Block break-words  whitespace-pre-line" id="prevDescription"></h4>
+                </div>
+                <p class="text-xl font-semibold mb-4"></p>
+                <p class="mb-4"></p>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">EXPÉRIENCES <br>PROFESSIONNELLES</h3><br>
+                    <hr class="border-gray-500 mb-2">
+                    <!-- <h4 class="text-xl font-semibold"></h4>
+                    <p></p>
+                    <p></p> -->
+                    <ul class="w-64 Block break-words" id="previewExperiences"></ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">FORMATION</h3>
+                    <hr class="border-gray-500 mb-2">
+                    <ul id="previewFormation" ></ul>
+                    
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">REFERENCES</h3>
+                    <hr class="border-gray-500 mb-2">
+                    <ul class="w-64 Block break-words" id="previewReferences"></ul>
+                    
+                </div>
+                <button onclick="downloadPDF()" class="mt-4 bg-green-500 text-white p-2 rounded hover:bg-green-200 hover:text-green-700">Télécharger en PDF</button>
+            </div>
+        </section>  
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
